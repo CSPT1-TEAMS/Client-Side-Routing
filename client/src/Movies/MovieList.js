@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { Route } from 'react-router-dom';
+// import Movie from './movie';
 export default class MovieList extends React.Component {
   state = {
     movies: [],
@@ -17,14 +18,22 @@ export default class MovieList extends React.Component {
         console.error('Server Error', error);
       });
   }
-  F;
+  
 
   render() {
+    console.log(this.props);
     return (
+      
       <div className="movie-list">
         {this.state.movies.map(movie => (
+          
           <MovieCard key={movie.id} movie={movie} />
+         
         ))}
+        
+   
+        
+        
       </div>
     );
   }
@@ -33,7 +42,7 @@ export default class MovieList extends React.Component {
 function MovieCard({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
-    <Link to={`/movies/${movie.id}`}>
+    <Link to={`/movies/${movie.id}`} >
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">

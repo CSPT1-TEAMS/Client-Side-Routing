@@ -18,7 +18,10 @@ export default class MovieCard extends React.Component {
       });
   }
 
+  
+
   render() {
+    console.log(this.props);
     if(!this.state.movie) {
       return <div>Loading movie information...</div>
     }
