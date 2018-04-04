@@ -30,11 +30,15 @@ export default class MovieList extends React.Component {
   }
 }
 
+const stylez = {
+  color: 'teal'
+}
+
 function MovieCard({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
     <Link to={`/movies/${movie.id}`}>
-      <div className="movie-card">
+      <div style={stylez} className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
           Director: <em>{director}</em>
