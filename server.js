@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const CORS = require('cors');
 
-const app = express();
+const application = express();
 
-app.use(bodyParser.json());
-app.use(CORS());
+application.use(bodyParser.json());
+application.use(CORS());
 
 const movies = [
 	{
@@ -31,20 +31,20 @@ const movies = [
 	},
 ];
 
-app.get('/api/movies', (req, res) => {
+application.get('/api/movies', (req, res) => {
 	res.send(movies);
 });
 
-app.get('/api/movies/:id', (req, res) => {
+application.get('/api/movies/:id', (req, res) => {
 	const movie = movies.filter(movie => movie.id.toString() === req.params.id)[0];
 	res.status(200).json(movie);
 });
 
-app.post('/api/movies', (req, res) => {
+application.post('/api/movies', (req, res) => {
 	if (req.body.id !== undefined) movies.push(req.body);
 	res.status(201).json(movies);
 });
 
-app.listen(5000, () => {
+application.listen(5000, () => {
 	console.log('Server listening on port 5000');
 });
