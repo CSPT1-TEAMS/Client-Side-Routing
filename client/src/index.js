@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
+import App from './App';
 
 ReactDOM.render(
-  <div>Application running, add your routing</div>,
+  <Router>
+    <App />
+  </Router>,
   document.getElementById('root')
 );
