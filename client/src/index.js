@@ -10,7 +10,7 @@ ReactDOM.render(
     <Router>
   <div>
     <Route exact path='/' component={MovieList} />
-    <Route path='/:id' component={MovieCard} />
+    <Route path='/movies/:id' component={MovieCard} />
   </div>
     </Router>,
   document.getElementById('root')
