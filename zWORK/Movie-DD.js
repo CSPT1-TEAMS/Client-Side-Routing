@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+const API_KEY = 'e3dac0b87a792dff369db76d8e6c7e80';
+
 export default class MovieCard extends React.Component {
   
   state = {
@@ -26,8 +28,8 @@ export default class MovieCard extends React.Component {
       });
       
     axios
-      .get(`https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=${title}`)
-      // ('https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=Jack+Reacher')
+      .get(`https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=${title}`)  //('https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=Jack+Reacher')
+      
       .then(repsone => this.setState(() => ({ movie: response.data })))
       .catch(error => {
         console.error(error);
@@ -44,6 +46,7 @@ export default class MovieCard extends React.Component {
     return (
       <div className="movie-card">
         <h2>{title}</h2>
+        
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>
