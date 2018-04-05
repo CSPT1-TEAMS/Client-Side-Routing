@@ -3,30 +3,30 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const API_KEY = 'aa71be19e3f94c1686212b7b46b28de9'
-const POSTER_PATH = 'https://image.tmdb.org/t/p/w500'
-
-const idArray = ['238', '11', '120'];
+const SEARCH_POSTER_URL = 'https://image.tmdb.org/t/p/w500'
+const SEARCH_MOVIE_URL = `http://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`
 
 export default class Movie extends React.Component {
-  
   state = {
     movie: null,
-    movieData: {}
+    posterPath: ''
   };
 
   componentDidMount() {
     const { id } = this.props.match.params
-    axios
-      .get(`http://localhost:5000/api/movies/${id}`)
-      .then(response => this.setState(() => ({ movie: response.data })))
-      .catch(error => {
-        console.error(error);
-      });
 
     axios
-      .get(`https://api.themoviedb.org/3/movie/${idArray[id]}?api_key=${API_KEY}&poster_path/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg`)
-      .then(response => this.setState(() => ({ movieData: response.data.poster_path })))
-      .catch(error => { console.error(error)});
+      .get(`http://localhost:5000/api/movies/${id}`)
+      .then(response => {
+	const movie = response.data
+	this.setState(() => ({ movie: movie }))
+	return axios.get(`${SEARCH_MOVIE_URL}${movie.title}`)
+      })
+      .then(response => {
+	const posterPath = response.data.results[0].poster_path
+	this.setState({ posterPath })
+      })
+      .catch(e => console.error(e))
   }
 
   render() {
@@ -48,7 +48,10 @@ export default class Movie extends React.Component {
             Metascore: <strong>{metascore}</strong>
           </div>
           <h3>Actors</h3>
-	  <img src={POSTER_PATH + this.state.movieData}/>
+	  <img
+	    src={`${SEARCH_POSTER_URL}${this.state.posterPath}`}
+	    alt={`${this.state.movie.title} Poster`}
+	    />
 	  
           {stars.map(star => (
             <div key={star} className="movie-star">
