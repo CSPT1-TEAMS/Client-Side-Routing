@@ -7,6 +7,7 @@ export default class MovieList extends React.Component {
     movies: [],
   };
 
+  
   componentDidMount() {
     axios
       .get('http://localhost:5000/api/movies')
@@ -17,7 +18,6 @@ export default class MovieList extends React.Component {
         console.error('Server Error', error);
       });
   }
-  F;
 
   render() {
     return (
