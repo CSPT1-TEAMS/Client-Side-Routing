@@ -7,7 +7,7 @@ const API_KEY = "e3dac0b87a792dff369db76d8e6c7e80";
 export default class MovieCard extends React.Component {
   state = {
     movie: null,
-    poster: null
+    poster: null,
   };
 
   componentDidMount() {
@@ -35,18 +35,11 @@ export default class MovieCard extends React.Component {
 
     axios
       .get(`https://api.themoviedb.org/3/movie/${id}?api_key=e3dac0b87a792dff369db76d8e6c7e80`)
-      .then(repsone => this.setState(() => ({ movie: response.data })))
+      .then(response => this.setState(() => ({ movie: response.data })))
       .catch(error => {
         console.error(error);
       });
       
-    axios
-      .get(`https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=${title}`)
-      // ('https://api.themoviedb.org/3/search/movie?api_key=e3dac0b87a792dff369db76d8e6c7e80&query=Jack+Reacher')
-      .then(repsone => this.setState(() => ({ movie: response.data })))
-      .catch(error => {
-        console.error(error);
-      });
 }
 
    
@@ -59,7 +52,7 @@ export default class MovieCard extends React.Component {
     return (
       <div className="movie-card">
         <h2>{title}</h2>
-        <img src={this.state.poster} />
+        <img src={this.state.poster} alt="" />
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>
