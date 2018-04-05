@@ -16,6 +16,7 @@ export default class MovieList extends React.Component {
       .catch(error => {
         console.error('Server Error', error);
       });
+      console.log('Movie Card', this.props);
   }
   F;
 
@@ -34,7 +35,6 @@ function MovieCard({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
     <Link to={`/movies/${movie.id}`}>
-    {console.log(c`/movies/${movie.id}`)}
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">

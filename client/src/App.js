@@ -9,8 +9,8 @@ import { Route } from 'react-router-dom';
 const App = () => {
     return (
         <div>
-            <Route to="/" component={MovieList}/>
-            <Route to={`/movies/${Movie.id}`} component={Movie} />
+            <Route exact path="/" component={MovieList}/>
+            <Route path={`/movies/:id`} component={Movie} />
         </div>
     );
 }
