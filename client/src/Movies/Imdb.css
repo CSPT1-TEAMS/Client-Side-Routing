@@ -1,0 +1,17 @@
+.Imdb-Movie {
+  display: flex;
+  height: 400px;
+}
+
+.Imdb-Movie img {
+  flex: 0 0 auto;
+  width: 25%;
+  padding: 15px;
+}
+
+.Imdb-Movie div {
+  flex: 0 0 auto;
+  width: 25%;
+  padding: 10px;
+}
+
