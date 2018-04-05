@@ -31,12 +31,12 @@ export default class MovieList extends React.Component {
 }
 
 function MovieCard({ movie }) {
-  const { title, director, metascore, stars } = movie;
+  const { title /*, director, metascore, stars*/ } = movie;
   return (
     <Link to={`/movies/${movie.id}`}>
       <div className="movie-card">
         <h2>{title}</h2>
-        <div className="movie-director">
+        {/* <div className="movie-director">
           Director: <em>{director}</em>
         </div>
         <div className="movie-metascore">
@@ -46,9 +46,9 @@ function MovieCard({ movie }) {
 
         {stars.map(star => (
           <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
+            {star} 
+           </div>
+        ))} */}
       </div>
     </Link>
   );
