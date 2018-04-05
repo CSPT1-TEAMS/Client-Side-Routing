@@ -2,10 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+const API_KEY = 'aa71be19e3f94c1686212b7b46b28de9'
+const POSTER_PATH = 'https://image.tmdb.org/t/p/w500'
+
+const idArray = ['238', '11', '120'];
+
 export default class Movie extends React.Component {
   
   state = {
     movie: null,
+    movieData: {}
   };
 
   componentDidMount() {
@@ -16,6 +22,11 @@ export default class Movie extends React.Component {
       .catch(error => {
         console.error(error);
       });
+
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${idArray[id]}?api_key=${API_KEY}&poster_path/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg`)
+      .then(response => this.setState(() => ({ movieData: response.data.poster_path })))
+      .catch(error => { console.error(error)});
   }
 
   render() {
@@ -37,6 +48,7 @@ export default class Movie extends React.Component {
             Metascore: <strong>{metascore}</strong>
           </div>
           <h3>Actors</h3>
+	  <img src={POSTER_PATH + this.state.movieData}/>
 	  
           {stars.map(star => (
             <div key={star} className="movie-star">
