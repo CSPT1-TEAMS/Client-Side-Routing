@@ -12,7 +12,7 @@ export default class MovieCard extends React.Component {
     // change this line to grab the id passed on the URL
     const id=this.props.match.params.id;
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:5001/api/movies/${id}`)
       .then(response => this.setState(() => ({ movie: response.data })))
       .catch(error => {
         console.error(error);
@@ -25,11 +25,13 @@ export default class MovieCard extends React.Component {
       return <div>Loading movie information...</div>
     }
 
-    const { title, director, metascore, stars } = this.state.movie;
+    const { title, director, metascore, stars,image } = this.state.movie;
     return (
+      
     <div>
+
         <Link className="home-button" to="/">MovieList Home</Link>
-      <div className="movie-card">
+      <div className="movie-card" style = {{backgroundImage: `url(${image})`}} >
         <h2>{title}</h2>
         <div className="movie-director">
           Director: <em>{director}</em>
