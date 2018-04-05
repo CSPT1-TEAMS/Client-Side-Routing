@@ -9,7 +9,7 @@ export default class Movie extends React.Component {
   };
 
   componentDidMount() {
-    const { id } = this.props;
+    const { id } = this.props.match.params
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(response => this.setState(() => ({ movie: response.data })))
@@ -24,6 +24,7 @@ export default class Movie extends React.Component {
     }
 
     const { title, director, metascore, stars } = this.state.movie;
+
     return (
       <div className="movie-wrapper">
 
