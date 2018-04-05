@@ -9,7 +9,7 @@ import './index.css';
 
 
 ReactDOM.render(
-  <Router><div> Hello
+  <Router><div> 
      <Route exact path="/" component={MovieList}  />
      <Route path="/movies/:id" component={Movie}/>
   </div></Router>,
