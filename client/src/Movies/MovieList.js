@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-// import Movie from './movie';
+
 export default class MovieList extends React.Component {
   state = {
     movies: [],
@@ -21,19 +21,11 @@ export default class MovieList extends React.Component {
   
 
   render() {
-    console.log(this.props);
     return (
-      
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          
           <MovieCard key={movie.id} movie={movie} />
-         
         ))}
-        
-   
-        
-        
       </div>
     );
   }

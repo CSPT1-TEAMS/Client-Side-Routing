@@ -5,15 +5,17 @@ import './index.css';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
 
+const extractIdFromUrl = url => url[url.length-1]
+
+console.log(extractIdFromUrl('/movies/1'))
+
 ReactDOM.render(
 <Router>
   <div>
-  <Route exact path="/movielist" component={MovieList}/>
-  <Route path="/movielist/movie/:id" />
-  {/* <Route path="/movie" component={Movie} />
-  <Route path="/movielist" component={MovieList} /> */}
-  <div>Application running, add your routing</div>
-  
+    <Route exact path="/" component={MovieList}/>
+    <Route path="/movies/:id" render={({ match }) => (
+      <Movie id={extractIdFromUrl(match.url)}/>
+    )}/>
   </div>
 </Router>,
   document.getElementById('root')
