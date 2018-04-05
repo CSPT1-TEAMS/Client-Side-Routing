@@ -4,16 +4,20 @@ import { Link } from 'react-router-dom';
 
 export default class MovieCard extends React.Component {
   
-  state = {
-    movie: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: null,
+    };
+  }
+
 
   componentDidMount() {
     // change this line to grab the id passed on the URL
-    const id = this.props.match.params.id;
-    console.log(this.props);
+    // const id = this.props.movie.id;
+    console.log('here', this.props);
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
       .then(response => this.setState(() => ({ movie: response.data })))
       .catch(error => {
         console.error(error);
@@ -25,11 +29,14 @@ export default class MovieCard extends React.Component {
       return <div>Loading movie information...</div>
     }
 
+
     const { title, director, metascore, stars } = this.state.movie;
     return (
       <div className="movie-card">
         <Link to="/">Home</Link>
-        <h2>{title}</h2>
+        <h2>
+        <Link to={`/movies/${this.props.match.params.id}`}>{title}</Link>
+        </h2>
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>

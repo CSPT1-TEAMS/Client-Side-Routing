@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import MovieCard from './Movie';
 
 export default class MovieList extends React.Component {
   state = {
     movies: [],
+    search: ''
   };
 
   componentDidMount() {
@@ -16,13 +18,24 @@ export default class MovieList extends React.Component {
       .catch(error => {
         console.error('Server Error', error);
       });
-      console.log('Movie Card', this.props);
+    }
+
+  handleChange = (e) => {
+    this.setState({search: e.target.value});
   }
-  F;
+  searchMovie = (e) => {
+    e.preventDefault();
+    this.state.movies.filter(); // stopped here for the night
+  }
 
   render() {
+    console.log('Movie Array', this.state.movies);
     return (
       <div className="movie-list">
+      <Link to="/actors">Actors</Link>
+      <form>
+        <input type="text" onSubmit={this.searchMovie} placeholder='search' value={this.state.search} onChange={this.handleChange}></input>
+      </form> 
         {this.state.movies.map(movie => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
