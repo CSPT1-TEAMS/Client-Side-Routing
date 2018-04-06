@@ -53,3 +53,4 @@ function MovieCard({ movie }) {
     </Link>
   );
 }
+
