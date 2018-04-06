@@ -59,7 +59,7 @@ export default class MovieCard extends React.Component {
         <div className="movie-metascore">
           Metascore: <strong>{metascore}</strong>
         </div>
-        <h3>Actors</h3>
+        <h3>Cast</h3>
 
         {stars.map(star => (
           <div key={star} className="movie-star">
