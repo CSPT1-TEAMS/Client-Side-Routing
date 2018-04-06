@@ -14,6 +14,11 @@ const movies = [
 		director: 'Francis Ford Coppola',
 		metascore: 100,
 		stars: ['Marlon Brando', 'Al Pacino', 'Robert Duvall'],
+		budget: 6000000,
+		revenue: 245066411,
+		popularity: 0,
+		average_votes: 0,
+		total_votes: 0,
 	},
 	{
 		id: 1,
@@ -21,6 +26,11 @@ const movies = [
 		director: 'George Lucas',
 		metascore: 92,
 		stars: ['Mark Hamill', 'Harrison Ford', 'Carrie Fisher'],
+		budget: 11000000,
+		revenue: 775398007,
+		popularity: 0,
+		average_votes: 0,
+		total_votes: 0,
 	},
 	{
 		id: 2,
@@ -28,6 +38,11 @@ const movies = [
 		director: 'Peter Jackson',
 		metascore: 92,
 		stars: ['Elijah Wood', 'Ian McKellen', 'Orlando Bloom'],
+		budget: 93000000,
+		revenue: 871368364,
+		popularity: 0,
+		average_votes: 0,
+		total_votes: 0,
 	},
 ];
 
